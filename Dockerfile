@@ -1,4 +1,4 @@
-FROM sonarqube:6.7.2
+FROM sonarqube:6.7.3
 
 # Custom Plugins
 ENV ANDROID_PLUGIN_VERSION=1.1 \
