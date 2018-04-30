@@ -1,13 +1,17 @@
 FROM sonarqube:6.7.3
 
 # Custom Plugins
-ENV ANDROID_PLUGIN_VERSION=1.1 \
+ENV JAVA_PLUGIN_VERSION=5.3.0.13828 \
+    ANDROID_PLUGIN_VERSION=1.1 \
     CHECKSTYLE_PLUGIN_VERSION=4.9 \
     FINDBUGS_PLUGIN_VERSION=3.7.0 \
     GITHUB_PLUGIN_VERSION=1.4.2.1027 \
     DETEKT_PLUGIN_VERSION=0.4.1
 
 RUN cd ${SONARQUBE_HOME}/extensions/plugins/ \
+    # Java
+    && curl --silent --location --output ./sonar-java-plugin-${JAVA_PLUGIN_VERSION}.jar \
+            https://sonarsource.bintray.com/Distribution/sonar-java-plugin/sonar-java-plugin-${JAVA_PLUGIN_VERSION}.jar \
     # Android Lint
     && curl --silent --location --output ./sonar-android-plugin-${ANDROID_PLUGIN_VERSION}.jar \
         https://github.com/ofields/sonar-android/releases/download/${ANDROID_PLUGIN_VERSION}/sonar-android-plugin-${ANDROID_PLUGIN_VERSION}.jar \
