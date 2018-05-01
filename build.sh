@@ -1,7 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-IMAGE=sonarqube
-USERNAME=alapshin
+source config
 
 docker build --tag "${USERNAME}"/"${IMAGE}":latest .
